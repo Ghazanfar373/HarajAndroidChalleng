@@ -1,13 +1,16 @@
 package com.example.myapplication
-
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.Adapters.ItemsAdapter
 import com.example.DataModel.ItemsDataModel
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +54,47 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "data.json")
+        Log.i("data", jsonFileString)
+
+        if (jsonFileString != null) {
+            val jsonObject = JSONObject(jsonFileString)
+            val jsonArray = jsonObject.optJSONArray("data")
+            for (i in 0 until jsonArray.length()) {
+                val jsonObject = jsonArray.getJSONObject(i)
+                parseItemObject(jsonObject)
+            }
+            }
+
+    }
+    private fun parseItemObject(item: JSONObject) {
+        //Get employee object within list
+        val title = item["title"] as String
+        val model: ItemsDataModel = ItemsDataModel(title)
+        //Get employee first name
+        model.username = item["username"] as String
+        //Get employee last name
+         model.thumbURL = item["thumbURL"] as String
+        //Get employee website name
+         model.commentCount = item["commentCount"] as String
+         model.location = item["city"] as String
+         model.date = item["date"] as String
+         model.body = item["body"] as String
+
+        arrayList.add(model)
+    }
+    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
