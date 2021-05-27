@@ -25,7 +25,7 @@ class ItemsAdapter(private val context: Activity,  private val model: ArrayList<
         val location = rowView.findViewById(R.id.location) as TextView
         titleText.text = model[position].title
        //thumbnail.setImageResource(imgid[position])
-        postedTime.text = model[position].date
+        postedTime.text = ""+ model[position].date
         username.text = model[position].username
         location.text = model[position].location
         Picasso.with(context).load(model[position].thumbURL).placeholder(R.mipmap.ic_launcher).into(thumbnail)

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/view_foreground"
@@ -13,18 +11,16 @@
             android:id="@+id/thumbnail"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:padding="5dp"
+            android:padding="2dp"
             android:scaleType="fitXY" />
-
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_alignParentEnd="true"
+            android:layout_alignParentEnd="true"
             android:ellipsize="end"
-            android:fontFamily="sans-serif-thin"
             android:maxLines="1"
-            android:layout_margin="3dp"
+            android:layout_margin="1dp"
             android:textStyle="bold"
             android:text="Corolla GLI 2017"
             android:textColor="@color/item_name"
@@ -35,19 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
-            android:layout_marginTop="8dp"
+            android:paddingTop="8dp"
             android:text="Since 3 hours"
             android:layout_alignParentEnd="true"
             android:textColor="@color/item_name"
             android:textStyle="bold"
-            android:textSize="15sp" />
-
-
+            android:textSize="13sp" />
         <LinearLayout
             android:layout_below="@+id/postedTime"
             android:layout_alignBaseline="@+id/thumbnail"
             android:layout_toEndOf="@+id/thumbnail"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -57,12 +51,16 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:text="Riyadh"
-                android:textSize="10sp"
+                android:textSize="15sp"
+                android:paddingStart="5dp"
+                android:layout_marginStart="4dp"
+                android:textAlignment="gravity"
                 android:textStyle="bold" />
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_dialog_map"
+                android:src="@drawable/outline_pin_drop_black_18"
+                android:layout_marginStart="2dp"
                 />
             <TextView
                 android:id="@+id/username"
@@ -70,12 +68,16 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:text="Abdul Rehman"
-                android:textSize="10sp"
+                android:textAlignment="gravity"
+                android:textSize="15sp"
+                android:layout_marginStart="4dp"
+                android:paddingStart="5dp"
                 android:textStyle="bold" />
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/arrow_down_float"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/outline_person_outline_black_18"
                 />
         </LinearLayout>
     </RelativeLayout>
