@@ -1,5 +1,4 @@
-# My_Application
-Haraj Challenge
+# Haraj Challenge
 
 
 Video Demo available on youtube
